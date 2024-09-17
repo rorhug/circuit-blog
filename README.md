@@ -1,75 +1,49 @@
-# Monorepo Template
+Objective:
 
-A template to create a monorepo SST ❍ Ion project.
-
-## Get started
-
-1. Use this template to [create your own repo](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template).
-
-2. Clone the new repo.
-
-   ```bash
-   git clone MY_APP
-   cd MY_APP
-   ```
-
-3. Rename the files in the project to the name of your app. 
-
-   ```bash
-   npx replace-in-file /monorepo-template/g MY_APP **/*.* --verbose
-   ```
-
-4. Deploy!
-
-   ```bash
-   npm install
-   npx sst deploy
-   ```
-
-6. Optionally, enable [_git push to deploy_](https://ion.sst.dev/docs/console/#autodeploy).
-
-## Usage
-
-This template uses [npm Workspaces](https://docs.npmjs.com/cli/v8/using-npm/workspaces). It has 3 packages to start with and you can add more it.
-
-1. `core/`
-
-   This is for any shared code. It's defined as modules. For example, there's the `Example` module.
-
-   ```ts
-   export module Example {
-     export function hello() {
-       return "Hello, world!";
-     }
-   }
-   ```
-
-   That you can use across other packages using.
-
-   ```ts
-   import { Example } from "@aws-monorepo/core/example";
-
-   Example.hello();
-   ```
-
-2. `functions/`
-
-   This is for your Lambda functions and it uses the `core` package as a local dependency.
-
-3. `scripts/`
-
-    This is for any scripts that you can run on your SST app using the `sst shell` CLI and [`tsx`](https://www.npmjs.com/package/tsx). For example, you can run the example script using:
-
-   ```bash
-   npm run shell src/example.ts
-   ```
-
-### Infrastructure
-
-The `infra/` directory allows you to logically split the infrastructure of your app into separate files. This can be helpful as your app grows.
-
-In the template, we have an `api.ts`, and `storage.ts`. These export the created resources. And are imported in the `sst.config.ts`.
+Design and implement a scalable system that simulates a Blogging Platform. The platform should allow multiple users to create, update, and delete blog posts, add comments, and follow other users. The system should also include additional features for efficient data handling, API design, caching, event-driven architecture, and frontend-backend integration.
 
 ---
 
-Join the SST community over on [Discord](https://discord.gg/sst) and follow us on [Twitter](https://twitter.com/SST_dev).
+Functional Requirements
+
+- Register and log in users to the platform.
+- Users should be able to Create, update, and delete blog posts.
+- Users should be able to comment on blog posts.
+- Users should be able to Search blogs via search filters.
+- Users should be able to Follow/Unfollow users.
+- When a user creates a blog, a notification should be sent to all the users that follow him.
+
+Non Functional Requirements
+
+- The system should handle high traffic efficiently and scale well.
+- The system should be fault tolerant and robust.
+- The system should provide a good user experience.
+
+---
+
+Deliverables:
+
+Implement the backend using the language and framework of your choice preferably (NodeJS/Java/GoLang) which includes but not limited to
+
+- Modelling the data accurately.
+- Expose the required APIs to perform the functions.
+- Implementing repository functions to interact with the database of choice.
+
+Document the decision making process either through comments or in a separate document.
+We will be visiting these deliverables during the interview.
+
+---
+
+TODO
+
+- [ ] Add a notification system to the project
+- [ ] Add a search system to the project
+- [ ] Add a follow system to the project
+- [ ] update and delete posts
+
+Where we could go next:
+
+- cleanup sessions table regularly
+- separate primary key for users so they can change address, have multiple addresses
+- Add a frontend to the project
+- Allow inline signature of api requests - w/o session but require api body to be signed

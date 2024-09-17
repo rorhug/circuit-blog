@@ -1,0 +1,82 @@
+# Using https://marketplace.visualstudio.com/items?itemName=humao.rest-client
+# test trpc endpoints
+
+@hostname = https://krx4zd3cku3zrcizhave745fg40nvdme.lambda-url.us-east-1.on.aws
+@sessionId = 137c08cf-d9ff-479d-9f63-880452ec3736
+
+GET {{hostname}}/user.nonce HTTP/1.1
+content-type: application/json
+
+###
+
+POST {{hostname}}/user.signIn HTTP/1.1
+content-type: application/json
+
+{
+  "signature": "0xa9bb959540f5733294d8ff7899ab8e9492564b0636e189c6af99d2f8b2341a331022a2b85cc5eb73d867ece9e45a7a9015250d2c51d39ee32e8425c7ddd9c20b1c",
+  "message": {
+    "domain": "1.x.wagmi.sh",
+    "address": "0x50099BED7fD2b7Ca7000c8A87d6b2ED83971E363",
+    "statement": "Sign in with Ethereum to the app.",
+    "uri": "https://1.x.wagmi.sh",
+    "version": "1",
+    "chainId": 1,
+    "nonce": "uVOj37LwbFuHk5JMU",
+    "issuedAt": "2024-09-17T02:22:16.473Z"
+  },
+  "nonce": "uVOj37LwbFuHk5JMU",
+  "username": "rorhug"
+}
+
+
+###
+
+POST {{hostname}}/post.create HTTP/1.1
+content-type: application/json
+X-Session-Id: {{sessionId}}
+
+{
+  "title": "My second post",
+  "content": "This is the content of my 2nd post"
+}
+
+###
+
+GET {{hostname}}/post.getAll HTTP/1.1
+content-type: application/json
+
+### follow self - error
+
+POST {{hostname}}/follows.follow HTTP/1.1
+content-type: application/json
+X-Session-Id: {{sessionId}}
+
+{
+  "followedAddress": "0x50099BED7fD2b7Ca7000c8A87d6b2ED83971E363"
+}
+
+### follow user
+
+POST {{hostname}}/follows.follow HTTP/1.1
+content-type: application/json
+X-Session-Id: {{sessionId}}
+
+{
+  "followedAddress": "0x40088BED7fD2b7Ca7000c8A87d6b2ED83971E399"
+}
+
+### unfollow user
+
+POST {{hostname}}/follows.unfollow HTTP/1.1
+content-type: application/json
+X-Session-Id: {{sessionId}}
+
+{
+  "followedAddress": "0x40088BED7fD2b7Ca7000c8A87d6b2ED83971E399"
+}
+
+### get followers
+
+GET {{hostname}}/follows.getFollowers HTTP/1.1
+content-type: application/json
+X-Session-Id: {{sessionId}}

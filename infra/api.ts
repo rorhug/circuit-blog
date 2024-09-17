@@ -1,7 +1,8 @@
-import { bucket } from "./storage";
+// import { bucket } from "./storage";
+import { rds } from "./db";
 
-export const myApi = new sst.aws.Function("MyApi", {
+export const trpc = new sst.aws.Function("Trpc", {
   url: true,
-  link: [bucket],
-  handler: "packages/functions/src/api.handler"
+  handler: "packages/functions/src/index.handler",
+  link: [rds],
 });
