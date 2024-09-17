@@ -3,7 +3,7 @@
 
 @hostname = https://krx4zd3cku3zrcizhave745fg40nvdme.lambda-url.us-east-1.on.aws
 # @hostname = https://5stufiwjink2ilejxzelc43niu0gjcbl.lambda-url.us-east-1.on.aws/
-@sessionId = 9d80dd67-ffae-40dc-b899-f56d84dd4af0
+@sessionId = 1c8a9628-040c-4cca-bc0f-8ffc28fd15af
 
 GET {{hostname}}/user.nonce HTTP/1.1
 content-type: application/json
@@ -38,8 +38,8 @@ content-type: application/json
 X-Session-Id: {{sessionId}}
 
 {
-  "title": "My 11 post",
-  "content": "This is the content of my 10 post"
+  "title": "My great post",
+  "content": "This is the content of my post"
 }
 
 ### Get all posts
@@ -64,7 +64,7 @@ content-type: application/json
 X-Session-Id: {{sessionId}}
 
 {
-  "followedAddress": "0x40088BED7fD2b7Ca7000c8A87d6b2ED83971E399"
+  "followedAddress": "0x77799BED7fD2b7Ca7000c8A87d6b2ED83971E363"
 }
 
 ### unfollow user
@@ -84,6 +84,6 @@ content-type: application/json
 X-Session-Id: {{sessionId}}
 
 ### search posts
-GET {{hostname}}/post.search#?authorAddress=0x50099BED7fD2b7Ca7000c8A87d6b2ED83971E363&titleContains=post HTTP/1.1
+GET {{hostname}}/post.search?authorAddress=0x50099BED7fD2b7Ca7000c8A87d6b2ED83971E363&titleContains=post HTTP/1.1
 content-type: application/json
 X-Session-Id: {{sessionId}}

@@ -42,6 +42,7 @@ TODO
 - [x] Add a search system to the project
 - [x] Add a follow system to the project
 - [x] update and delete posts
+- [x] database migrations
 
 Where we could go next:
 
@@ -52,5 +53,4 @@ Where we could go next:
 - swagger/openapi ui
 - Blog frontend
 - Allow inline signature of api requests - w/o session but require api body to be signed
-- database migrations
 - store sent email and dlq messages in db to monitor

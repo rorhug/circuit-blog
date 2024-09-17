@@ -74,26 +74,26 @@ export const postRouter = t.router({
       })
     )
     .query(async ({ input }) => {
-      // let predicates = [];
+      let predicates = [];
 
-      // if (input.authorAddress) {
-      //   predicates.push(eq(posts.authorAddress, input.authorAddress));
-      // }
+      if (input.authorAddress) {
+        predicates.push(eq(posts.authorAddress, input.authorAddress));
+      }
 
-      // if (input.titleContains) {
-      //   predicates.push(ilike(posts.title, `%${input.titleContains}%`));
-      // }
+      if (input.titleContains) {
+        predicates.push(ilike(posts.title, `%${input.titleContains}%`));
+      }
 
-      // if (input.beforeDate) {
-      //   predicates.push(lt(posts.createdAt, input.beforeDate));
-      // }
+      if (input.beforeDate) {
+        predicates.push(lt(posts.createdAt, input.beforeDate));
+      }
 
-      // if (input.afterDate) {
-      //   predicates.push(gt(posts.createdAt, input.afterDate));
-      // }
+      if (input.afterDate) {
+        predicates.push(gt(posts.createdAt, input.afterDate));
+      }
 
       const filteredPosts = await db.query.posts.findMany({
-        // where: predicates.length > 0 ? and(...predicates) : undefined,
+        where: predicates.length > 0 ? and(...predicates) : undefined,
         limit: 10,
       });
 

@@ -60,6 +60,11 @@ export const processNotifyAboutPost = async ({
       .map((rec) => rec.follower.email)
       .filter(Boolean) as string[];
 
+    if (emails.length === 0) {
+      console.log("no emails to send to");
+      return;
+    }
+
     const body: EmailBatchAboutPostSchemaT = { postId, emails };
 
     await client.send(
