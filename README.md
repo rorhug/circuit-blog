@@ -1,3 +1,5 @@
+![createpost](./createpost.png)
+
 Objective:
 
 Design and implement a scalable system that simulates a Blogging Platform. The platform should allow multiple users to create, update, and delete blog posts, add comments, and follow other users. The system should also include additional features for efficient data handling, API design, caching, event-driven architecture, and frontend-backend integration.
@@ -36,10 +38,10 @@ We will be visiting these deliverables during the interview.
 
 TODO
 
-- [ ] Add a notification system to the project
-- [ ] Add a search system to the project
-- [ ] Add a follow system to the project
-- [ ] update and delete posts
+- [x] Add a notification system to the project
+- [x] Add a search system to the project
+- [x] Add a follow system to the project
+- [x] update and delete posts
 
 Where we could go next:
 
