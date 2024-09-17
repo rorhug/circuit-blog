@@ -10,8 +10,14 @@ export default $config({
   },
   async run() {
     const api = await import("./infra/api");
+
+    const { postQueue, emailQueue, dlq } = await import("./infra/queues");
+
     return {
       api: api.trpc.url,
+      postQueue: postQueue.url,
+      emailQueue: emailQueue.url,
+      dlq: dlq.url,
     };
   },
 });

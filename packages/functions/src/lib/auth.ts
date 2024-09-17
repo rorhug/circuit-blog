@@ -15,7 +15,11 @@ export const getSession = async (sessionId: string) => {
   return session;
 };
 
-export const findOrCreateUser = async (address: string, username?: string) => {
+export const findOrCreateUser = async (
+  address: string,
+  username: string,
+  email: string | null = null
+) => {
   // let user: typeof users.$inferSelect;
 
   const existingUser = await db.query.users.findFirst({
@@ -29,7 +33,8 @@ export const findOrCreateUser = async (address: string, username?: string) => {
       .insert(users)
       .values({
         address,
-        username: username ?? "",
+        username,
+        email,
       })
       .returning();
 

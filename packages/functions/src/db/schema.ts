@@ -11,10 +11,14 @@ export const users = pgTable("users", {
   address: text("address").primaryKey(), // eth address
   username: text("username").notNull(),
   createdAt: timestamp("created_at").defaultNow().notNull(),
+  email: text("email"),
 });
 
 export const userRelations = relations(users, ({ many }) => ({
   sessions: many(sessions),
+  posts: many(posts),
+  comments: many(comments),
+  follows: many(follows),
 }));
 
 // todo: table should be vaccummed
@@ -45,6 +49,13 @@ export const posts = pgTable("posts", {
   updatedAt: timestamp("updated_at").defaultNow().notNull(),
 });
 
+export const postRelations = relations(posts, ({ one }) => ({
+  author: one(users, {
+    fields: [posts.authorAddress],
+    references: [users.address],
+  }),
+}));
+
 export const comments = pgTable("comments", {
   id: uuid("id").defaultRandom().primaryKey(),
   postId: uuid("post_id")
@@ -72,3 +83,10 @@ export const follows = pgTable(
     pk: primaryKey({ columns: [table.followerAddress, table.followedAddress] }),
   })
 );
+
+export const followRelations = relations(follows, ({ one }) => ({
+  follower: one(users, {
+    fields: [follows.followerAddress],
+    references: [users.address],
+  }),
+}));

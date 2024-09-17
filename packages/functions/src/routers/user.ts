@@ -18,11 +18,12 @@ export const userRouter = t.router({
         signature: z.string(),
         message: z.any(),
         nonce: z.string(),
-        username: z.string().optional(),
+        username: z.string(),
+        email: z.string().optional(),
       })
     )
     .mutation(async ({ input }) => {
-      const { signature, message, nonce, username } = input;
+      const { signature, message, nonce, username, email } = input;
 
       let SIWEObject = new SiweMessage(message);
       const {
@@ -40,7 +41,7 @@ export const userRouter = t.router({
         });
       }
 
-      const user = await findOrCreateUser(address, username);
+      const user = await findOrCreateUser(address, username, email);
 
       const session = await createSession(user.address);
 

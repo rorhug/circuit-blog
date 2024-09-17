@@ -43,7 +43,12 @@ TODO
 
 Where we could go next:
 
+- unit and integration tests
+- require usage of a provided nonce for signing requests (either via storing it in session or db)
 - cleanup sessions table regularly
 - separate primary key for users so they can change address, have multiple addresses
-- Add a frontend to the project
+- swagger/openapi ui
+- Blog frontend
 - Allow inline signature of api requests - w/o session but require api body to be signed
+- database migrations
+- store sent email and dlq messages in db to monitor

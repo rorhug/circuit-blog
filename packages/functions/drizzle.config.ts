@@ -1,6 +1,12 @@
 import { Resource } from "sst";
 import { type Config } from "drizzle-kit";
 
+console.log({
+  database: Resource.MyPostgres.database,
+  secretArn: Resource.MyPostgres.secretArn,
+  resourceArn: Resource.MyPostgres.clusterArn,
+});
+
 export default {
   driver: "aws-data-api",
   schema: "./src/db/schema.ts",

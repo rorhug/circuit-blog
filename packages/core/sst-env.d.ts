@@ -5,6 +5,18 @@ import "sst"
 export {}
 declare module "sst" {
   export interface Resource {
+    "BlogPostEmailQ": {
+      "type": "sst.aws.Queue"
+      "url": string
+    }
+    "BlogPostNotificationDLQ": {
+      "type": "sst.aws.Queue"
+      "url": string
+    }
+    "BlogPostNotificationQ": {
+      "type": "sst.aws.Queue"
+      "url": string
+    }
     "MyPostgres": {
       "clusterArn": string
       "database": string

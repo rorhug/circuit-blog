@@ -2,7 +2,8 @@
 # test trpc endpoints
 
 @hostname = https://krx4zd3cku3zrcizhave745fg40nvdme.lambda-url.us-east-1.on.aws
-@sessionId = 137c08cf-d9ff-479d-9f63-880452ec3736
+# @hostname = https://5stufiwjink2ilejxzelc43niu0gjcbl.lambda-url.us-east-1.on.aws/
+@sessionId = 9d80dd67-ffae-40dc-b899-f56d84dd4af0
 
 GET {{hostname}}/user.nonce HTTP/1.1
 content-type: application/json
@@ -25,22 +26,23 @@ content-type: application/json
     "issuedAt": "2024-09-17T02:22:16.473Z"
   },
   "nonce": "uVOj37LwbFuHk5JMU",
-  "username": "rorhug"
+  "username": "rorhug",
+  "email": "rorhug@gmail.com"
 }
 
 
-###
+### Create a post
 
 POST {{hostname}}/post.create HTTP/1.1
 content-type: application/json
 X-Session-Id: {{sessionId}}
 
 {
-  "title": "My second post",
-  "content": "This is the content of my 2nd post"
+  "title": "My 11 post",
+  "content": "This is the content of my 10 post"
 }
 
-###
+### Get all posts
 
 GET {{hostname}}/post.getAll HTTP/1.1
 content-type: application/json
@@ -78,5 +80,10 @@ X-Session-Id: {{sessionId}}
 ### get followers
 
 GET {{hostname}}/follows.getFollowers HTTP/1.1
+content-type: application/json
+X-Session-Id: {{sessionId}}
+
+### search posts
+GET {{hostname}}/post.search#?authorAddress=0x50099BED7fD2b7Ca7000c8A87d6b2ED83971E363&titleContains=post HTTP/1.1
 content-type: application/json
 X-Session-Id: {{sessionId}}

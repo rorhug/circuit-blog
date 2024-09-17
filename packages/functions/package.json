@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "dependencies": {
     "@aws-sdk/client-rds-data": "^3.650.0",
+    "@aws-sdk/client-sqs": "^3.651.1",
     "@circuit-blog/core": "*",
     "@trpc/client": "11.0.0-rc.502",
     "@trpc/server": "11.0.0-rc.502",
@@ -19,7 +20,9 @@
   "scripts": {
     "db:generate": "sst shell drizzle-kit generate",
     "db:migrate": "sst shell drizzle-kit migrate",
-    "db:push": "sst shell drizzle-kit push",
-    "db:studio": "sst shel drizzle-kit studio"
+    "db:push": "sst shell drizzle-kit push --verbose ",
+    "db:studio": "sst shell drizzle-kit studio",
+
+    "dbprod:push": "sst shell --stage production drizzle-kit push"
   }
 }
